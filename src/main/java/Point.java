@@ -1,4 +1,6 @@
 public class Point {
+
+    // point is  coordinate of axes which satisfies limt
     private int x;
     private int y;
 
@@ -14,6 +16,7 @@ public class Point {
     public int getY(){
         return x;
     }
+
     public void setPoint(int x, int y){
         this.x = x;
         this.y = y;
