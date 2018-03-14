@@ -14,7 +14,7 @@ public class Point {
     }
 
     public int getY(){
-        return x;
+        return y;
     }
 
     public void setPoint(int x, int y){
