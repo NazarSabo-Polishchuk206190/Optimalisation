@@ -45,7 +45,7 @@ public class Limits {
                         Point point = new Point(tempx1, tempy1);
                         intersectionPoints.add(point);
                     }
-                    if(((i == temparr1.size())-1)&&((j == temparr2.size())-1) &&(counter == 1)){
+                    if(((i == (temparr1.size())-1))&&((j == (temparr2.size())-1)) &&(counter == 1)){
                         if(ar1.size() < ar3.size() ){
                             temparr1 = ar1;
                             temparr2 = ar3;
@@ -57,7 +57,7 @@ public class Limits {
                            i = 0;
                            counter++;
                     }
-                    if(((i == temparr1.size())-1)&&((j == temparr2.size())-1) &&(counter == 2)){
+                    if(((i == (temparr1.size())-1))&&((j == (temparr2.size())-1)) &&(counter == 2)){
                         if(ar1.size() < ar4.size() ){
                             temparr1 = ar1;
                             temparr2 = ar4;
@@ -69,7 +69,7 @@ public class Limits {
                         i = 0;
                         counter++;
                     }
-                    if(((i == temparr1.size())-1)&&((j == temparr2.size())-1) &&(counter == 3)){
+                    if(((i == (temparr1.size())-1))&&((j == (temparr2.size())-1)) &&(counter == 3)){
                         if(ar1.size() < ar5.size() ){
                             temparr1 = ar1;
                             temparr2 = ar5;
@@ -81,7 +81,7 @@ public class Limits {
                         i = 0;
                         counter++;
                     }
-                    if(((i == temparr1.size())-1)&&((j == temparr2.size())-1) &&(counter == 4)){
+                    if(((i == (temparr1.size())-1))&&((j == (temparr2.size())-1)) &&(counter == 4)){
                         if(ar2.size() < ar3.size() ){
                             temparr1 = ar2;
                             temparr2 = ar3;
@@ -93,7 +93,7 @@ public class Limits {
                         i = 0;
                         counter++;
                     }
-                    if(((i == temparr1.size())-1)&&((j == temparr2.size())-1) &&(counter == 5)){
+                    if(((i == (temparr1.size())-1))&&((j == (temparr2.size())-1)) &&(counter == 5)){
                         if(ar2.size() < ar4.size() ){
                             temparr1 = ar2;
                             temparr2 = ar4;
@@ -105,7 +105,7 @@ public class Limits {
                         i = 0;
                         counter++;
                     }
-                    if(((i == temparr1.size())-1)&&((j == temparr2.size())-1) &&(counter == 6)){
+                    if(((i == (temparr1.size())-1))&&((j == (temparr2.size())-1)) &&(counter == 6)){
                         if(ar2.size() < ar5.size() ){
                             temparr1 = ar2;
                             temparr2 = ar5;
@@ -117,7 +117,7 @@ public class Limits {
                         i = 0;
                         counter++;
                     }
-                    if(((i == temparr1.size())-1)&&((j == temparr2.size())-1) &&(counter == 7)){
+                    if(((i == (temparr1.size())-1))&&((j == (temparr2.size())-1)) &&(counter == 7)){
                         if(ar3.size() < ar4.size() ){
                             temparr1 = ar3;
                             temparr2 = ar4;
@@ -129,7 +129,7 @@ public class Limits {
                         i = 0;
                         counter++;
                     }
-                    if(((i == temparr1.size())-1)&&((j == temparr2.size())-1) &&(counter == 8)){
+                    if(((i == (temparr1.size())-1))&&((j == (temparr2.size())-1)) &&(counter == 8)){
                         if(ar3.size() < ar5.size() ){
                             temparr1 = ar3;
                             temparr2 = ar5;
@@ -141,7 +141,7 @@ public class Limits {
                         i = 0;
                         counter++;
                     }
-                    if(((i == temparr1.size())-1)&&((j == temparr2.size())-1) &&(counter == 9)){
+                    if(((i == (temparr1.size())-1))&&((j == (temparr2.size())-1)) &&(counter == 9)){
                         if(ar4.size() < ar5.size() ){
                             temparr1 = ar4;
                             temparr2 = ar5;

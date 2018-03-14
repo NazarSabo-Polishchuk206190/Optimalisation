@@ -38,13 +38,13 @@ public class App {
         int max = 0;
         ArrayList<Point> FinalSolutionList = new ArrayList<Point>();
 
-        SolutionList1 = Example.Limit(x1,y1,res1);
-        SotlutionList2 =  Example.Limit(x2,y2,res2);
-        SolutionList3 =  Example.Limit(x3,y3,res3);
-        SolutionList4 =  Example.Limit(x4,y4,res4);
-        SolutionList5 =  Example.Limit(x5,y5,res5);
+        SolutionList1 = Limits.Limit(x1,y1,res1);
+        SolutionList2 =  Limits.Limit(x2,y2,res2);
+        SolutionList3 =  Limits.Limit(x3,y3,res3);
+        SolutionList4 =  Limits.Limit(x4,y4,res4);
+        SolutionList5 =  Limits.Limit(x5,y5,res5);
 
-        FinalSolutionList = = checkIntersection(SolutionList1, SolutionList2, SolutionList3, SolutionList4, SolutionList5);
+        FinalSolutionList =  Limits.checkIntersection(SolutionList1, SolutionList2, SolutionList3, SolutionList4, SolutionList5);
 
         for(int i=0; i<FinalSolutionList.size(); i++){
             int x = FinalSolutionList.get(i).getX();
