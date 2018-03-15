@@ -44,25 +44,43 @@ class Chart extends ApplicationFrame {
     }
 
     private XYDataset createDataset( ) {
+
+        App.Solve();
+
         final XYSeries line1 = new XYSeries( "Line1" );
-        //line1.add(App.SolutionList1.get(0).getX(), App.SolutionList1.get(0).getY());
-        line1.add(0,0);
-        line1.add(5, 5);
+        line1.add(App.SolutionList1.get(0).getX(), App.SolutionList1.get(0).getY());
+        line1.add(App.SolutionList1.get(1).getX(), App.SolutionList1.get(1).getY());
+        //line1.add(0,0);
+        //line1.add(5, 5);
 
         final XYSeries line2 = new XYSeries( "Line2" );
-        line2.add( 1.0 , 4.0 );
-        line2.add( 2.0 , 5.0 );
-        line2.add( 3.0 , 6.0 );
+        line2.add(App.SolutionList2.get(0).getX(), App.SolutionList2.get(0).getY());
+        line2.add(App.SolutionList2.get(1).getX(), App.SolutionList2.get(1).getY());
+        //line2.add( 1.0 , 4.0 );
+        //line2.add( 2.0 , 5.0 );
+        //line2.add( 3.0 , 6.0 );
 
         final XYSeries line3 = new XYSeries( "Line3" );
-        line3.add( 3.0 , 4.0 );
-        line3.add( 4.0 , 5.0 );
-        line3.add( 5.0 , 6.0 );
+        line1.add(App.SolutionList3.get(0).getX(), App.SolutionList3.get(0).getY());
+        line1.add(App.SolutionList3.get(1).getX(), App.SolutionList3.get(1).getY());
+        //line3.add( 3.0 , 4.0 );
+        //line3.add( 4.0 , 5.0 );
+        //line3.add( 5.0 , 6.0 );
+
+        final XYSeries line4 = new XYSeries( "Line4" );
+        line1.add(App.SolutionList4.get(0).getX(), App.SolutionList4.get(0).getY());
+        line1.add(App.SolutionList4.get(1).getX(), App.SolutionList4.get(1).getY());
+
+        final XYSeries line5 = new XYSeries( "Line5" );
+        line1.add(App.SolutionList5.get(0).getX(), App.SolutionList5.get(0).getY());
+        line1.add(App.SolutionList5.get(1).getX(), App.SolutionList5.get(1).getY());
 
         final XYSeriesCollection dataset = new XYSeriesCollection( );
         dataset.addSeries( line1 );
         dataset.addSeries( line2 );
         dataset.addSeries( line3 );
+        dataset.addSeries( line4 );
+        dataset.addSeries( line5 );
         return dataset;
     }
 

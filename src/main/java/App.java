@@ -34,7 +34,7 @@ public class App {
     public static ArrayList<Point> SolutionList4 = new ArrayList<Point>();
     public static ArrayList<Point> SolutionList5 = new ArrayList<Point>();
 
-    public int Solve(){
+    public static void Solve(){
         int max = 0;
         ArrayList<Point> FinalSolutionList = new ArrayList<Point>();
 
@@ -54,6 +54,6 @@ public class App {
                 max = temp;
             }
         }
-        return max;
+        System.out.print("The max result is:" + max + ".");
     }
 }
