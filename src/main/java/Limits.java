@@ -3,18 +3,17 @@ import java.util.ArrayList;
 //The main funktion of this class is checkIntersection() function which returns set of intersection points intersectionPoints
 
 public class Limits {
-    public static ArrayList<Point> SolutionList = new ArrayList<Point>();
-
-    public static int x1 = -2;
-    public static int y1 = 3;
-    public static int res = 13;
-
     public static ArrayList<Point> Limit(int ax, int ay, int res){
-        for(int x = 0; x<=30; x++){
-            for(int y = 0; y<=30; y++ ){
-                int ex = ax*x + ay*y;
-                if(ex==res){
-                    Point point = new Point(x, y);
+        ArrayList<Point> SolutionList = new ArrayList<Point>();
+        for(int i = (-10); i<=30; i++){
+            for(int j = (-10); j<=30; j++ ){
+                int ex = ax*i + ay*j;
+
+                //1*1 + 4*5 = 8
+                if(ex==res) {
+                    //System.out.print("ex = " + ex + " " + "res = " + res + "   ");
+                    //System.out.println("--- " + i + " --- " + i + " ---");
+                    Point point = new Point(i, j);
                     SolutionList.add(point);
                 }
             }

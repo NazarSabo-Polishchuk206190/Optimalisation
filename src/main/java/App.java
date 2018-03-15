@@ -28,23 +28,14 @@ public class App {
     public static int ey = 3;
     //res -> max
 
-    public static ArrayList<Point> SolutionList1 = new ArrayList<Point>();
-    public static ArrayList<Point> SolutionList2 = new ArrayList<Point>();
-    public static ArrayList<Point> SolutionList3 = new ArrayList<Point>();
-    public static ArrayList<Point> SolutionList4 = new ArrayList<Point>();
-    public static ArrayList<Point> SolutionList5 = new ArrayList<Point>();
 
     public static void Solve(){
         int max = 0;
         ArrayList<Point> FinalSolutionList = new ArrayList<Point>();
 
-        SolutionList1 = Limits.Limit(x1,y1,res1);
-        SolutionList2 =  Limits.Limit(x2,y2,res2);
-        SolutionList3 =  Limits.Limit(x3,y3,res3);
-        SolutionList4 =  Limits.Limit(x4,y4,res4);
-        SolutionList5 =  Limits.Limit(x5,y5,res5);
 
-        FinalSolutionList =  Limits.checkIntersection(SolutionList1, SolutionList2, SolutionList3, SolutionList4, SolutionList5);
+        FinalSolutionList =  Limits.checkIntersection(Chart.SolutionList1, Chart.SolutionList2, Chart.SolutionList3,
+                Chart.SolutionList4, Chart.SolutionList5);
 
         for(int i=0; i<FinalSolutionList.size(); i++){
             int x = FinalSolutionList.get(i).getX();
@@ -53,6 +44,7 @@ public class App {
             if(temp>= max){
                 max = temp;
             }
+            System.out.print("The max result is:" + max + ".");
         }
         System.out.print("The max result is:" + max + ".");
     }

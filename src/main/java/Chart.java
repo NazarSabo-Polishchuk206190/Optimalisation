@@ -14,6 +14,7 @@ import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 class Chart extends ApplicationFrame {
 
@@ -43,37 +44,53 @@ class Chart extends ApplicationFrame {
         setContentPane( chartPanel );
     }
 
+        public static ArrayList<Point> SolutionList1 = new ArrayList<Point>();
+        public static ArrayList<Point> SolutionList2 = new ArrayList<Point>();
+        public static ArrayList<Point> SolutionList3 = new ArrayList<Point>();
+        public static ArrayList<Point> SolutionList4 = new ArrayList<Point>();
+        public static ArrayList<Point> SolutionList5 = new ArrayList<Point>();
+
     private XYDataset createDataset( ) {
 
-        App.Solve();
+        SolutionList1 = Limits.Limit(App.x1,App.y1,App.res1);
+        SolutionList2 =  Limits.Limit(App.x2,App.y2,App.res2);
+        SolutionList3 =  Limits.Limit(App.x3,App.y3,App.res3);
+        SolutionList4 =  Limits.Limit(App.x4,App.y4,App.res4);
+        SolutionList5 =  Limits.Limit(App.x5,App.y5,App.res5);
 
         final XYSeries line1 = new XYSeries( "Line1" );
-        line1.add(App.SolutionList1.get(0).getX(), App.SolutionList1.get(0).getY());
-        line1.add(App.SolutionList1.get(1).getX(), App.SolutionList1.get(1).getY());
-        //line1.add(0,0);
-        //line1.add(5, 5);
-
+        for(int i=0; i<SolutionList1.size(); i++) {
+            line1.add(SolutionList1.get(i).getX(), SolutionList1.get(i).getY());
+        }
         final XYSeries line2 = new XYSeries( "Line2" );
-        line2.add(App.SolutionList2.get(0).getX(), App.SolutionList2.get(0).getY());
-        line2.add(App.SolutionList2.get(1).getX(), App.SolutionList2.get(1).getY());
-        //line2.add( 1.0 , 4.0 );
-        //line2.add( 2.0 , 5.0 );
-        //line2.add( 3.0 , 6.0 );
+        for(int i=0; i<SolutionList2.size(); i++) {
+            line2.add(SolutionList2.get(i).getX(), SolutionList2.get(i).getY());
+        }
 
         final XYSeries line3 = new XYSeries( "Line3" );
-        line1.add(App.SolutionList3.get(0).getX(), App.SolutionList3.get(0).getY());
-        line1.add(App.SolutionList3.get(1).getX(), App.SolutionList3.get(1).getY());
-        //line3.add( 3.0 , 4.0 );
-        //line3.add( 4.0 , 5.0 );
-        //line3.add( 5.0 , 6.0 );
+        for(int i=0; i<SolutionList3.size(); i++) {
+            line3.add(SolutionList3.get(i).getX(), SolutionList3.get(i).getY());
+        }
 
         final XYSeries line4 = new XYSeries( "Line4" );
-        line1.add(App.SolutionList4.get(0).getX(), App.SolutionList4.get(0).getY());
-        line1.add(App.SolutionList4.get(1).getX(), App.SolutionList4.get(1).getY());
+        for(int i=0; i<SolutionList4.size(); i++) {
+            line4.add(SolutionList4.get(i).getX(), SolutionList4.get(i).getY());
+        }
 
         final XYSeries line5 = new XYSeries( "Line5" );
-        line1.add(App.SolutionList5.get(0).getX(), App.SolutionList5.get(0).getY());
-        line1.add(App.SolutionList5.get(1).getX(), App.SolutionList5.get(1).getY());
+        for(int i=0; i<SolutionList5.size(); i++) {
+            line5.add(SolutionList5.get(i).getX(), SolutionList5.get(i).getY());
+        }
+
+        final XYSeries linex = new XYSeries( "Linex" );
+        for(int i=0; i<30; i++) {
+            linex.add(i, 0);
+        }
+
+        final XYSeries liney = new XYSeries( "Liney" );
+        for(int i=0; i<30; i++) {
+            liney.add(0,i );
+        }
 
         final XYSeriesCollection dataset = new XYSeriesCollection( );
         dataset.addSeries( line1 );
@@ -81,7 +98,16 @@ class Chart extends ApplicationFrame {
         dataset.addSeries( line3 );
         dataset.addSeries( line4 );
         dataset.addSeries( line5 );
+        dataset.addSeries( linex );
+        dataset.addSeries( liney );
         return dataset;
+    }
+
+    public static void print(ArrayList<Point> SolList){
+        for(int i=0; i<SolList.size(); i++) {
+            System.out.print("X= " + SolList.get(i).getX());
+            System.out.println("Y= " + SolList.get(i).getY() + "//" + i);
+        }
     }
 
     public static void main( String[ ] args ) {
@@ -90,5 +116,11 @@ class Chart extends ApplicationFrame {
         chart.pack( );
         RefineryUtilities.centerFrameOnScreen( chart );
         chart.setVisible( true );
+        print(SolutionList1);
+        print(SolutionList2);
+        print(SolutionList3);
+        print(SolutionList4);
+        print(SolutionList5);
+        App.Solve();
     }
 }
