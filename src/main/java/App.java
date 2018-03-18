@@ -7,22 +7,27 @@ public class App {
     public static int x1 = -2;
     public static int y1 = 3;
     public static int res1 = 13;
+    public static boolean sign1 = false; // false = "<="
     //-----lim-2-----//
     public static int x2 = 3;
     public static int y2 = 1;
     public static int res2 = 8;
+    public static boolean sign2 = true; // true = "=>"
     //-----lim-3-----//
     public static int x3 = 1;
     public static int y3 = 4;
     public static int res3 = 32;
+    public static boolean sign3 = false;
     //-----lim-4-----//
     public static int x4 = 5;
     public static int y4 = -1;
     public static int res4 = 34;
+    public static boolean sign4 = false;
     //-----lim-5-----//
     public static int x5 = 3;
     public static int y5 = 5;
     public static int res5 = 12;
+    public static boolean sign5 = true;
     //-----example-----//
     public static int ex = 4;
     public static int ey = 3;
@@ -34,8 +39,8 @@ public class App {
         ArrayList<Point> FinalSolutionList = new ArrayList<Point>();
 
 
-        FinalSolutionList =  Limits.checkIntersection(Chart.SolutionList1, Chart.SolutionList2, Chart.SolutionList3,
-                Chart.SolutionList4, Chart.SolutionList5);
+//        FinalSolutionList =  Limits.checkIntersection(Chart.SolutionList1, Chart.SolutionList2, Chart.SolutionList3,
+//                Chart.SolutionList4, Chart.SolutionList5);
 
         for(int i=0; i<FinalSolutionList.size(); i++){
             int x = FinalSolutionList.get(i).getX();

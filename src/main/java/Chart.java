@@ -121,6 +121,8 @@ class Chart extends ApplicationFrame {
         print(SolutionList3);
         print(SolutionList4);
         print(SolutionList5);
-        App.Solve();
+
+        //App.Solve();
+        Limits.intersectionList(SolutionList1, SolutionList2, SolutionList3, SolutionList4, SolutionList5);
     }
 }

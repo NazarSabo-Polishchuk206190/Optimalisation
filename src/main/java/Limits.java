@@ -21,141 +21,81 @@ public class Limits {
         return SolutionList;
     }
 
-    public static ArrayList<Point> checkIntersection(ArrayList<Point> ar1, ArrayList<Point> ar2, ArrayList<Point> ar3, ArrayList<Point> ar4, ArrayList<Point> ar5){
+    public void checkSolutionList(ArrayList<Point> solList, int x1, int y1, int res1, boolean sign1,
+                                  int x2, int y2, int res2, boolean sign2,
+                                  int x3, int y3, int res3, boolean sign3,
+                                  int x4, int y4, int res4, boolean sign4,
+                                  int x5, int y5, int res5, boolean sign5){
+        ArrayList<Point> modifiedSolutionList = new ArrayList<Point>();
+        for(int i=0; i<solList.size(); i++){
+            int ex1 = x1*solList.get(i).getX() + y1*solList.get(i).getY();
+            int ex2 = x2*solList.get(i).getX() + y2*solList.get(i).getY();
+            int ex3 = x3*solList.get(i).getX() + y4*solList.get(i).getY();
+            int ex4 = x4*solList.get(i).getX() + y4*solList.get(i).getY();
+            int ex5 = x5*solList.get(i).getX() + y5*solList.get(i).getY();
+            if(sign1 == true){
+                if(ex1<=res1){
+                    Point point = new Point(solList.get(i).getX(),solList.get(i).getY());
+                    modifiedSolutionList.add(point);
+                }
 
-        ArrayList<Point> intersectionPoints = new ArrayList<Point>();
-        ArrayList<Point> temparr1 = new ArrayList<Point>();
-        ArrayList<Point> temparr2 = new ArrayList<Point>();
-        int counter = 0;
-
-        if(ar1.size() < ar2.size() ){
-            temparr1 = ar1;
-            temparr2 = ar2;
-            counter++;
-        }
-        for(int i = 0; i < temparr1.size(); i++){
-            for(int j = 0; j < temparr2.size(); j++){
-                for(int a = 0; a < ar3.size(); a++){
-                    int tempx1 = temparr1.get(i).getX();
-                    int tempy1 = temparr1.get(i).getY();
-                    int tempx2 = temparr2.get(j).getY();
-                    int tempy2 = temparr2.get(j).getY();
-                    if((tempx1 == tempx2)&&(tempy1 == tempy2)){
-                        Point point = new Point(tempx1, tempy1);
-                        intersectionPoints.add(point);
-                    }
-                    if(((i == (temparr1.size())-1))&&((j == (temparr2.size())-1)) &&(counter == 1)){
-                        if(ar1.size() < ar3.size() ){
-                            temparr1 = ar1;
-                            temparr2 = ar3;
-                        }else{
-                            temparr1 = ar3;
-                            temparr2 = ar1;
-                        }
-                           j = 0;
-                           i = 0;
-                           counter++;
-                    }
-                    if(((i == (temparr1.size())-1))&&((j == (temparr2.size())-1)) &&(counter == 2)){
-                        if(ar1.size() < ar4.size() ){
-                            temparr1 = ar1;
-                            temparr2 = ar4;
-                        }else{
-                            temparr1 = ar4;
-                            temparr2 = ar1;
-                        }
-                        j = 0;
-                        i = 0;
-                        counter++;
-                    }
-                    if(((i == (temparr1.size())-1))&&((j == (temparr2.size())-1)) &&(counter == 3)){
-                        if(ar1.size() < ar5.size() ){
-                            temparr1 = ar1;
-                            temparr2 = ar5;
-                        }else{
-                            temparr1 = ar5;
-                            temparr2 = ar1;
-                        }
-                        j = 0;
-                        i = 0;
-                        counter++;
-                    }
-                    if(((i == (temparr1.size())-1))&&((j == (temparr2.size())-1)) &&(counter == 4)){
-                        if(ar2.size() < ar3.size() ){
-                            temparr1 = ar2;
-                            temparr2 = ar3;
-                        }else{
-                            temparr1 = ar3;
-                            temparr2 = ar2;
-                        }
-                        j = 0;
-                        i = 0;
-                        counter++;
-                    }
-                    if(((i == (temparr1.size())-1))&&((j == (temparr2.size())-1)) &&(counter == 5)){
-                        if(ar2.size() < ar4.size() ){
-                            temparr1 = ar2;
-                            temparr2 = ar4;
-                        }else{
-                            temparr1 = ar4;
-                            temparr2 = ar2;
-                        }
-                        j = 0;
-                        i = 0;
-                        counter++;
-                    }
-                    if(((i == (temparr1.size())-1))&&((j == (temparr2.size())-1)) &&(counter == 6)){
-                        if(ar2.size() < ar5.size() ){
-                            temparr1 = ar2;
-                            temparr2 = ar5;
-                        }else{
-                            temparr1 = ar5;
-                            temparr2 = ar2;
-                        }
-                        j = 0;
-                        i = 0;
-                        counter++;
-                    }
-                    if(((i == (temparr1.size())-1))&&((j == (temparr2.size())-1)) &&(counter == 7)){
-                        if(ar3.size() < ar4.size() ){
-                            temparr1 = ar3;
-                            temparr2 = ar4;
-                        }else{
-                            temparr1 = ar4;
-                            temparr2 = ar3;
-                        }
-                        j = 0;
-                        i = 0;
-                        counter++;
-                    }
-                    if(((i == (temparr1.size())-1))&&((j == (temparr2.size())-1)) &&(counter == 8)){
-                        if(ar3.size() < ar5.size() ){
-                            temparr1 = ar3;
-                            temparr2 = ar5;
-                        }else{
-                            temparr1 = ar5;
-                            temparr2 = ar3;
-                        }
-                        j = 0;
-                        i = 0;
-                        counter++;
-                    }
-                    if(((i == (temparr1.size())-1))&&((j == (temparr2.size())-1)) &&(counter == 9)){
-                        if(ar4.size() < ar5.size() ){
-                            temparr1 = ar4;
-                            temparr2 = ar5;
-                        }else{
-                            temparr1 = ar5;
-                            temparr2 = ar4;
-                        }
-                        j = 0;
-                        i = 0;
-                        counter++;
-                    }
+            }else{
+                if(res1<=ex1){
+                    Point point = new Point(solList.get(i).getX(),solList.get(i).getY());
+                    modifiedSolutionList.add(point);
                 }
             }
         }
-        return intersectionPoints;
+    }
+
+    public static Point intersectionPoint(ArrayList<Point> ar1, ArrayList<Point> ar2){
+        Point point = null;
+        Point temp1;
+        Point temp2;
+        for(int i=0; i<ar1.size(); i++){
+            for(int j=0; j<ar2.size(); j++){
+                temp1 = new Point(ar1.get(i).getX(),ar1.get(i).getY());
+                temp2 = new Point(ar2.get(j).getX(),ar2.get(j).getY());
+//                System.out.println("--- " + ar1.get(i).getX() + " --- " + ar1.get(i).getY() + " ---"
+//                        + ar2.get(j).getX() + " --- " + ar2.get(j).getY() + " ---");
+                if((temp1.getX() == temp2.getX())&&(temp1.getY() == temp2.getY())){
+                    //missed second if
+                        point = temp1;
+                        System.out.println("Point of intersection " + point.getX() + " + " + point.getY());
+                }
+            }
+        }
+        return point;
+    }
+
+    public static Point lineIntersectionPoint(int x1, int y1, int res1, int x2, int y2, int res2){
+        double x;
+        double y;
+        double paramY;
+
+//        paramY =(((x1*x) - res1) / (-y1));
+//        x = (res2 - (y2*paramY))/x2;
+        return null;
+    }
+
+    public static ArrayList<Point> intersectionList(ArrayList<Point> ar1, ArrayList<Point> ar2, ArrayList<Point> ar3,
+                                                    ArrayList<Point> ar4, ArrayList<Point> ar5){
+        ArrayList<Point> list = new ArrayList<Point>();
+        list.add(intersectionPoint(ar1, ar2));
+        list.add(intersectionPoint(ar1, ar3));
+        list.add(intersectionPoint(ar1, ar4));
+        list.add(intersectionPoint(ar1, ar5));
+
+        list.add(intersectionPoint(ar2, ar3));
+        list.add(intersectionPoint(ar2, ar4));
+        list.add(intersectionPoint(ar2, ar5));
+
+        list.add(intersectionPoint(ar3, ar4));
+        list.add(intersectionPoint(ar3, ar5));
+
+        list.add(intersectionPoint(ar4, ar5));
+
+        return list;
     }
 }
 
