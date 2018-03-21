@@ -27,6 +27,7 @@ class Chart extends ApplicationFrame {
                 PlotOrientation.VERTICAL ,
                 false , true , false);
 
+
         ChartPanel chartPanel = new ChartPanel( xylineChart );
         chartPanel.setPreferredSize( new java.awt.Dimension( 600 , 600 ) );
         final XYPlot plot = xylineChart.getXYPlot( );
@@ -44,6 +45,7 @@ class Chart extends ApplicationFrame {
 
     private XYDataset createDataset( ) {
         final XYSeries line1 = new XYSeries( "Line1" );
+        //line1.add(App.SolutionList1.get(0).getX(), App.SolutionList1.get(0).getY());
         line1.add(0,0);
         line1.add(5, 5);
 
