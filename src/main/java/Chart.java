@@ -34,14 +34,34 @@ class Chart extends ApplicationFrame {
         final XYPlot plot = xylineChart.getXYPlot( );
 
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer( );
-        renderer.setSeriesPaint( 0 , Color.RED );
-        renderer.setSeriesPaint( 1 , Color.GREEN );
-        renderer.setSeriesPaint( 2 , Color.YELLOW );
+        renderer.setSeriesPaint( 0 , Color.BLACK );
+        renderer.setSeriesPaint( 1 , Color.BLACK );
+        renderer.setSeriesPaint( 2 , Color.BLACK );
+        renderer.setSeriesPaint( 3 , Color.BLACK );
+        renderer.setSeriesPaint( 4 , Color.BLACK );
+        renderer.setSeriesPaint( 5 , Color.BLUE );
+        renderer.setSeriesPaint( 6 , Color.BLUE );
+
+
+        renderer.setSeriesShapesVisible(0, false);
+        renderer.setSeriesShapesVisible(1, false);
+        renderer.setSeriesShapesVisible(2, false);
+        renderer.setSeriesShapesVisible(3, false);
+        renderer.setSeriesShapesVisible(4, false);
+        renderer.setSeriesShapesVisible(5, false);
+        renderer.setSeriesShapesVisible(6, false);
+
         renderer.setSeriesStroke( 0 , new BasicStroke( 1.0f ) );
         renderer.setSeriesStroke( 1 , new BasicStroke( 1.0f ) );
         renderer.setSeriesStroke( 2 , new BasicStroke( 1.0f ) );
+        renderer.setSeriesStroke( 3 , new BasicStroke( 1.0f ) );
+        renderer.setSeriesStroke( 4 , new BasicStroke( 1.0f ) );
+        renderer.setSeriesStroke( 5 , new BasicStroke( 4.0f ) );
+        renderer.setSeriesStroke( 6 , new BasicStroke( 4.0f ) );
         plot.setRenderer( renderer );
         setContentPane( chartPanel );
+
+
     }
 
         public static ArrayList<Point> SolutionList1 = new ArrayList<Point>();
