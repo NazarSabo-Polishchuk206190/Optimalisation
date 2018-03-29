@@ -1,23 +1,23 @@
 public class Point {
 
     // point is  coordinate of axes which satisfies limt
-    private int x;
-    private int y;
+    private float x;
+    private float y;
 
-    Point(int x, int y){
+    Point(float x, float y){
         this.x = x;
         this.y = y;
     }
 
-    public int getX(){
+    public float getX(){
         return x;
     }
 
-    public int getY(){
+    public float getY(){
         return y;
     }
 
-    public void setPoint(int x, int y){
+    public void setPoint(float x, float y){
         this.x = x;
         this.y = y;
     }

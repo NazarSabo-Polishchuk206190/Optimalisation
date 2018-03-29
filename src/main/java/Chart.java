@@ -1,6 +1,3 @@
-
-
-import com.sun.org.apache.xalan.internal.utils.XMLSecurityManager;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -34,21 +31,50 @@ class Chart extends ApplicationFrame {
         final XYPlot plot = xylineChart.getXYPlot( );
 
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer( );
-        renderer.setSeriesPaint( 0 , Color.RED );
-        renderer.setSeriesPaint( 1 , Color.GREEN );
-        renderer.setSeriesPaint( 2 , Color.YELLOW );
+        renderer.setSeriesPaint( 0 , Color.BLACK );
+        renderer.setSeriesPaint( 1 , Color.BLACK );
+        renderer.setSeriesPaint( 2 , Color.BLACK );
+        renderer.setSeriesPaint( 3 , Color.BLACK );
+        renderer.setSeriesPaint( 4 , Color.BLACK );
+        renderer.setSeriesPaint( 5 , Color.BLUE );
+        renderer.setSeriesPaint( 6 , Color.BLUE );
+        renderer.setSeriesPaint( 7 , Color.red );
+        renderer.setSeriesPaint( 8 , Color.red );
+        renderer.setSeriesPaint( 9 , Color.yellow );
+
+        renderer.setSeriesShapesVisible(0, false);
+        renderer.setSeriesShapesVisible(1, false);
+        renderer.setSeriesShapesVisible(2, false);
+        renderer.setSeriesShapesVisible(3, false);
+        renderer.setSeriesShapesVisible(4, false);
+        renderer.setSeriesShapesVisible(5, false);
+        renderer.setSeriesShapesVisible(6, false);
+        renderer.setSeriesShapesVisible(7, false);
+        renderer.setSeriesShapesVisible(8, false);
+       // renderer.setSeriesShapesVisible(9, false);
+
         renderer.setSeriesStroke( 0 , new BasicStroke( 1.0f ) );
         renderer.setSeriesStroke( 1 , new BasicStroke( 1.0f ) );
         renderer.setSeriesStroke( 2 , new BasicStroke( 1.0f ) );
+        renderer.setSeriesStroke( 3 , new BasicStroke( 1.0f ) );
+        renderer.setSeriesStroke( 4 , new BasicStroke( 1.0f ) );
+        renderer.setSeriesStroke( 5 , new BasicStroke( 1.0f ) );
+        renderer.setSeriesStroke( 6 , new BasicStroke( 1.0f ) );
+        renderer.setSeriesStroke( 7 , new BasicStroke( 5.0f ) );
+        renderer.setSeriesStroke( 8 , new BasicStroke( 5.0f ) );
+        renderer.setSeriesStroke( 9 , new BasicStroke( 8.0f ) );
+
         plot.setRenderer( renderer );
         setContentPane( chartPanel );
+
+
     }
 
-        public static ArrayList<Point> SolutionList1 = new ArrayList<Point>();
-        public static ArrayList<Point> SolutionList2 = new ArrayList<Point>();
-        public static ArrayList<Point> SolutionList3 = new ArrayList<Point>();
-        public static ArrayList<Point> SolutionList4 = new ArrayList<Point>();
-        public static ArrayList<Point> SolutionList5 = new ArrayList<Point>();
+    public static ArrayList<Point> SolutionList1 = new ArrayList<Point>();
+    public static ArrayList<Point> SolutionList2 = new ArrayList<Point>();
+    public static ArrayList<Point> SolutionList3 = new ArrayList<Point>();
+    public static ArrayList<Point> SolutionList4 = new ArrayList<Point>();
+    public static ArrayList<Point> SolutionList5 = new ArrayList<Point>();
 
     private XYDataset createDataset( ) {
 
@@ -92,7 +118,23 @@ class Chart extends ApplicationFrame {
             liney.add(0,i );
         }
 
+            final XYSeries pointSet = new XYSeries("Point1");
+        pointSet.add(App.interPoints().get(4).getX(), App.interPoints().get(4).getY());
+        pointSet.add(App.interPoints().get(0).getX(), App.interPoints().get(0).getY());
+        pointSet.add(4,0);
+        pointSet.add(6.80f, 0);
+        pointSet.add(App.interPoints().get(5).getX(), App.interPoints().get(5).getY());
+
+        final XYSeries pointSet2 = new XYSeries("Point2");
+        pointSet2.add(App.interPoints().get(0).getX(), App.interPoints().get(0).getY());
+        pointSet2.add(App.interPoints().get(1).getX(), App.interPoints().get(1).getY());
+        pointSet2.add(App.interPoints().get(5).getX(), App.interPoints().get(5).getY());
+
+        final XYSeries result1 = new XYSeries("Result");
+        result1.add(App.result().getX(), App.result().getY());
+
         final XYSeriesCollection dataset = new XYSeriesCollection( );
+
         dataset.addSeries( line1 );
         dataset.addSeries( line2 );
         dataset.addSeries( line3 );
@@ -100,29 +142,25 @@ class Chart extends ApplicationFrame {
         dataset.addSeries( line5 );
         dataset.addSeries( linex );
         dataset.addSeries( liney );
+        dataset.addSeries( pointSet);
+        dataset.addSeries( pointSet2);
+        dataset.addSeries( result1);
+
         return dataset;
     }
 
-    public static void print(ArrayList<Point> SolList){
-        for(int i=0; i<SolList.size(); i++) {
-            System.out.print("X= " + SolList.get(i).getX());
-            System.out.println("Y= " + SolList.get(i).getY() + "//" + i);
-        }
-    }
-
     public static void main( String[ ] args ) {
+
+        double max = App.result().getX()*App.ex + App.result().getY()*App.ey;
+
         Chart chart = new Chart("Metoda graficzna",
-                "Rozwiązanie graficzne");
+                "Rozwiązanie graficzne:" + " Fmax (" + App.result().getX() + "," +
+                                                                App.result().getY() +") = " +
+                                                                + max);
         chart.pack( );
         RefineryUtilities.centerFrameOnScreen( chart );
         chart.setVisible( true );
-        print(SolutionList1);
-        print(SolutionList2);
-        print(SolutionList3);
-        print(SolutionList4);
-        print(SolutionList5);
 
-        //App.Solve();
-        Limits.intersectionList(SolutionList1, SolutionList2, SolutionList3, SolutionList4, SolutionList5);
+        System.out.print("Result is point(" +App.result().getX()+", "+App.result().getY()+")");
     }
 }
