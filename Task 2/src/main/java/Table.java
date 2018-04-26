@@ -1,7 +1,10 @@
+import javafx.scene.control.Tab;
+
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
+import java.util.ArrayList;
 
 public class Table extends JFrame
 {
@@ -22,7 +25,13 @@ public class Table extends JFrame
                 {null,  null,   null,    0, 0,    0, 0, 0, 0, 0, 0 }
         };
         //create table with data
-        JTable table = new JTable(data, columns);
+        Object[][] solutionList;
+        Object[][] solutionList1 = new Object[][]{};
+        solutionList = Methods.Solve(data,Cj);
+        solutionList1 = solutionList;
+        solutionList1 = Methods.next(solutionList,Cj);
+        //for(int i=0; i<solutionList.size();i++){
+        JTable table = new JTable(solutionList1, columns);
 
         //add the table to the frame
         this.add(new JScrollPane(table));
@@ -31,6 +40,7 @@ public class Table extends JFrame
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
         this.setVisible(true);
+        //}
     }
 
     public static void main(String[] args)
