@@ -25,13 +25,12 @@ public class Table extends JFrame
                 {null,  null,   null,    0, 0,    0, 0, 0, 0, 0, 0 }
         };
         //create table with data
-        Object[][] solutionList;
-        Object[][] solutionList1 = new Object[][]{};
+//        Object[][] solutionList = Methods.initialTableSolve(data,Cj);
+//        Object[][] solutionList1 = Methods.Solve(solutionList,Cj);
+        ArrayList<Object[][]> solutionList = new ArrayList<Object[][]>();
         solutionList = Methods.Solve(data,Cj);
-        solutionList1 = solutionList;
-        solutionList1 = Methods.next(solutionList,Cj);
         //for(int i=0; i<solutionList.size();i++){
-        JTable table = new JTable(solutionList1, columns);
+        JTable table = new JTable(solutionList.get(1), columns);
 
         //add the table to the frame
         this.add(new JScrollPane(table));

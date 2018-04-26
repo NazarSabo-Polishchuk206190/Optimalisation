@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.lang.reflect.Array;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.logging.XMLFormatter;
 
@@ -41,6 +42,7 @@ public class Methods {
                 keyColumn = i;
             }
         }
+        System.out.println(keyColumn);
         return keyColumn;
     }
 
@@ -66,16 +68,26 @@ public class Methods {
             }
         }
         if(min>0){
+            System.out.println(keyRow);
             return keyRow;
         }else {
             return -1;
         }
+
+
     }
 
     static float newValue(float oldValue, float verticalKeyValue, float horizontalKeyValue, float interKeyValue){
         float value;
+        if ((horizontalKeyValue==0)||(verticalKeyValue==0)) {
+            return oldValue;
+        }else{
         value = (oldValue - ((verticalKeyValue*horizontalKeyValue)/interKeyValue));
+            if(Float.isInfinite(value)){
+                return oldValue;
+            }
         return value;
+        }
     }
 
     static void fillCb(Object[][] data, Object[][] newData, int keyColumn, int keyRow, Object[] Cj){
@@ -85,14 +97,16 @@ public class Methods {
         newData[keyRow][2] = (Number) Cj[keyColumn];
     }
 
-    static void fillx0_b(Object[][] data, Object[][] newData, int keyColumn, int keyRow, Object[] Cj){
+    static Object[][] fillx0_b(Object[][] data, int keyColumn, int keyRow, Object[] Cj){
+        Object[][] newData = data;
         for (int i = 0; i<4; i++){
             newData[i][3] = newValue(((Number) data[i][3]).floatValue(), ((Number) data[i][keyColumn]).floatValue(),((Number) data[keyRow][3]).floatValue(),((Number) data[keyRow][keyColumn]).floatValue());
         }
-        System.out.println((((Number) data[keyRow][3]).floatValue()));
+        System.out.println((((Number) data[2][3]).floatValue()));
         System.out.println((((Number) data[keyRow][keyColumn]).floatValue()));
 
-        newData[2][3] = ((((Number) data[2][3]).floatValue()) / (((Number) data[2][5]).floatValue()));
+        newData[keyRow][3] = ((((Number) data[keyRow][3]).floatValue()) / (((Number) data[keyRow][keyColumn]).floatValue()));
+        return newData;
     }
 
     static void fillP123KeyColumn(Object[][] newData, int keyColumn, int keyRow){
@@ -122,7 +136,7 @@ public class Methods {
     static Object[][] fillNextTable(Object[][] data, int keyColumn, int keyRow, Object[] Cj){
         Object[][] newData = data;
         fillCb(data,newData, keyColumn, keyRow, Cj);
-        fillx0_b(data,newData, keyColumn, keyRow, Cj);
+        newData = fillx0_b(data,keyColumn, keyRow, Cj);
         fillP123(data, newData, keyColumn, keyRow);
         newData = calculteZj_Cj(newData, newData, Cj);
         int keyColumn2 = getKeyColumn(data);
@@ -135,20 +149,22 @@ public class Methods {
         data = calculteZj_Cj(data, data, Cj);
         int keyColumn = getKeyColumn(data);
         if (keyColumn != 0) {
-
             result = calculateRatio(data, keyColumn);
+            System.out.println(getKeyRow(data));
             return result;
         }
             return null;
     }
 
 
-    public static Object[][] Solve(Object[][] data, Object[] Cj) {
+    public static ArrayList<Object[][]> Solve(Object[][] data, Object[] Cj) {
         Object[][] tempTable1;
         Object[][] tempTable2;
-        ArrayList<Object> solutionTableList = new ArrayList<Object>();
+        ArrayList<Object[][]> solutionTableList = new ArrayList<Object[][]>();
         tempTable1 = initialTableSolve(data,Cj);
-        solutionTableList.add(tempTable1);
+        tempTable2 = fillNextTable(data,getKeyColumn(data),getKeyRow(data),Cj);
+        solutionTableList.add(0,tempTable1);
+        solutionTableList.add(1,tempTable2);
         //System.out.println(getKeyRow(tempTable1));
         //System.out.println(getKeyColumn(tempTable1));
         //solutionTableList.add(fillNextTable(tempTable1,getKeyColumn(tempTable1),getKeyRow(tempTable1),Cj));
@@ -163,10 +179,7 @@ public class Methods {
 //                break;
 //            }
 //        }
-        return tempTable1;
+        return solutionTableList;
     }
 
-    public static Object[][] next(Object[][] data, Object[] Cj){
-        return fillNextTable(data,getKeyColumn(data),getKeyRow(data),Cj);
-    }
 }
